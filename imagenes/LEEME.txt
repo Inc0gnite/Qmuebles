@@ -1,0 +1,19 @@
+CARPETA DE IMÁGENES — Muebles Q's
+==================================
+
+Deja aquí las fotos reales (comprimidas en https://squoosh.app o tinypng.com)
+y luego reemplaza los slots en index.html por etiquetas <img>.
+
+Fotos necesarias (nombres sugeridos):
+
+  hero.jpg               -> foto vertical destacada (~4:5)   · sección Hero
+  linea-madera.jpg       -> mueble en madera (~4:3)          · Qué fabricamos
+  linea-fierro.jpg       -> mueble en fierro (~4:3)          · Qué fabricamos
+  linea-aglomerados.jpg  -> aglomerados/pintados (~4:3)      · Qué fabricamos
+  taller.jpg             -> taller o equipo (~5:4)           · Nosotros
+  og-image.jpg           -> 1200x630 px para compartir enlace (va en la carpeta raíz,
+                            junto a index.html, NO aquí)
+
+Cómo reemplazar un slot en index.html:
+  Busca el bloque <div class="photo-slot">...</div>
+  y cámbialo por:  <img src="imagenes/hero.jpg" alt="Mueble de madera a medida">
