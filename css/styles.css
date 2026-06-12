@@ -137,6 +137,40 @@ header { position: sticky; }
   to   { top: -20%; }
 }
 
+/* Iconos del oficio flotando */
+.bg-icons {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bg-icon {
+  position: absolute;
+  color: var(--cobre);
+  opacity: .07;
+  animation: icon-float 16s ease-in-out infinite alternate;
+}
+@keyframes icon-float {
+  0%   { transform: translate(0, 0) rotate(var(--rot, 0deg)); }
+  50%  { transform: translate(14px, -22px) rotate(calc(var(--rot, 0deg) + 6deg)); }
+  100% { transform: translate(-10px, 16px) rotate(calc(var(--rot, 0deg) - 5deg)); }
+}
+.bg-icon.i1  { width: 90px;  top: 12%; left: 5%;   --rot: -12deg; animation-duration: 18s; }
+.bg-icon.i2  { width: 70px;  top: 28%; right: 7%;  --rot: 18deg;  animation-duration: 21s; animation-delay: -4s; }
+.bg-icon.i3  { width: 110px; top: 45%; left: 9%;   --rot: 8deg;   animation-duration: 16s; animation-delay: -8s; }
+.bg-icon.i4  { width: 95px;  top: 62%; right: 5%;  --rot: -8deg;  animation-duration: 23s; animation-delay: -2s; }
+.bg-icon.i5  { width: 65px;  top: 78%; left: 14%;  --rot: 15deg;  animation-duration: 19s; animation-delay: -11s; }
+.bg-icon.i6  { width: 80px;  top: 8%;  right: 28%; --rot: -20deg; animation-duration: 24s; animation-delay: -6s; }
+.bg-icon.i7  { width: 75px;  top: 88%; right: 20%; --rot: 5deg;   animation-duration: 17s; animation-delay: -9s; }
+.bg-icon.i8  { width: 60px;  top: 55%; left: 45%;  --rot: 25deg;  animation-duration: 26s; animation-delay: -13s; }
+.bg-icon.i9  { width: 50px;  top: 20%; left: 32%;  --rot: -30deg; animation-duration: 20s; animation-delay: -5s; }
+.bg-icon.i10 { width: 85px;  top: 70%; right: 38%; --rot: 0deg;   animation-duration: 30s; animation-delay: -15s; }
+@media (max-width: 760px) {
+  .bg-icon.i8, .bg-icon.i9, .bg-icon.i10 { display: none; }
+  .bg-icon { opacity: .05; }
+}
+
 /* Grain sutil de fondo */
 body::before {
   content: '';
