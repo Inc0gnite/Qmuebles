@@ -38,6 +38,105 @@ a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
 
+/* Canvas de partículas (polvo de taller) */
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+/* el contenido va sobre las partículas */
+header, section, .marquee-sec, .stats-band, footer, .wa-float { position: relative; z-index: 2; }
+header { position: sticky; }
+.wa-float { position: fixed; }
+
+/* Blobs de gradiente animados de fondo */
+.bg-blobs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .5;
+  will-change: transform;
+}
+.bg-blob.b1 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(201,142,90,.16) 0%, transparent 65%);
+  top: -200px; right: -150px;
+  animation: blob-drift-1 22s ease-in-out infinite alternate;
+}
+.bg-blob.b2 {
+  width: 550px; height: 550px;
+  background: radial-gradient(circle, rgba(160,107,60,.12) 0%, transparent 65%);
+  bottom: -180px; left: -120px;
+  animation: blob-drift-2 28s ease-in-out infinite alternate;
+}
+.bg-blob.b3 {
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, rgba(224,172,120,.08) 0%, transparent 65%);
+  top: 40%; left: 30%;
+  animation: blob-drift-3 34s ease-in-out infinite alternate;
+}
+@keyframes blob-drift-1 {
+  0%   { transform: translate(0,0) scale(1); }
+  50%  { transform: translate(-120px, 90px) scale(1.15); }
+  100% { transform: translate(60px, -70px) scale(.92); }
+}
+@keyframes blob-drift-2 {
+  0%   { transform: translate(0,0) scale(1); }
+  50%  { transform: translate(140px, -100px) scale(1.1); }
+  100% { transform: translate(-80px, 60px) scale(.95); }
+}
+@keyframes blob-drift-3 {
+  0%   { transform: translate(0,0) scale(1); }
+  50%  { transform: translate(-90px, -120px) scale(1.2); }
+  100% { transform: translate(110px, 80px) scale(.9); }
+}
+
+/* Líneas verticales sutiles que suben (efecto veta) */
+.bg-lines {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bg-line {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(201,142,90,.07) 30%, rgba(201,142,90,.07) 70%, transparent);
+  overflow: hidden;
+}
+.bg-line::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  background: linear-gradient(180deg, transparent, rgba(224,172,120,.55), transparent);
+  animation: line-rise 7s linear infinite;
+}
+.bg-line:nth-child(1) { left: 12%; }
+.bg-line:nth-child(1)::after { animation-delay: 0s; animation-duration: 8s; }
+.bg-line:nth-child(2) { left: 38%; }
+.bg-line:nth-child(2)::after { animation-delay: -3s; animation-duration: 11s; }
+.bg-line:nth-child(3) { left: 64%; }
+.bg-line:nth-child(3)::after { animation-delay: -6s; animation-duration: 9s; }
+.bg-line:nth-child(4) { left: 88%; }
+.bg-line:nth-child(4)::after { animation-delay: -1.5s; animation-duration: 13s; }
+@keyframes line-rise {
+  from { top: 110%; }
+  to   { top: -20%; }
+}
+
 /* Grain sutil de fondo */
 body::before {
   content: '';
