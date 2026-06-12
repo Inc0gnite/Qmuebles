@@ -96,7 +96,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
       swayPhase: Math.random() * Math.PI * 2,
       rot: Math.random() * Math.PI * 2,
       rotSpeed: (Math.random() - 0.5) * 0.012,
-      alpha: Math.random() * 0.22 + 0.1,
+      alpha: Math.random() * 0.35 + 0.22,
       warm: Math.random() > 0.4
     };
   }
@@ -118,9 +118,9 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
       if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
     }
     ctx.strokeStyle = s.warm
-      ? `rgba(201, 142, 90, ${s.alpha})`
-      : `rgba(224, 172, 120, ${s.alpha * 0.8})`;
-    ctx.lineWidth = 1.6;
+      ? `rgba(194, 112, 46, ${s.alpha})`
+      : `rgba(224, 138, 60, ${s.alpha * 0.85})`;
+    ctx.lineWidth = 2;
     ctx.lineCap = 'round';
     ctx.stroke();
     ctx.restore();
