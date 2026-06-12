@@ -4,16 +4,16 @@
    ============================================ */
 
 :root {
-  --bg: #141210;
-  --bg-soft: #1C1916;
-  --bg-card: #211D19;
-  --linea: #2E2922;
-  --crema: #F2EDE4;
-  --crema-dim: #B8AFa2;
-  --crema-mute: #847C70;
-  --cobre: #C98E5A;
-  --cobre-light: #E0AC78;
-  --cobre-deep: #A06B3C;
+  --bg: #FAF7F1;
+  --bg-soft: #F1ECE2;
+  --bg-card: #FFFFFF;
+  --linea: #E2DACC;
+  --crema: #2A241D;        /* texto principal (oscuro sobre claro) */
+  --crema-dim: #6B6256;    /* texto secundario */
+  --crema-mute: #968C7D;   /* texto atenuado */
+  --cobre: #B0784A;
+  --cobre-light: #C98E5A;
+  --cobre-deep: #8F5F35;
   --wa: #25D366;
   --wa-dark: #1EBE5A;
   --serif: 'Fraunces', Georgia, serif;
@@ -280,13 +280,13 @@ header {
   position: sticky;
   top: 0;
   z-index: 90;
-  background: rgba(20,18,16,.65);
+  background: rgba(250,247,241,.7);
   backdrop-filter: blur(18px) saturate(150%);
   -webkit-backdrop-filter: blur(18px) saturate(150%);
-  border-bottom: 1px solid rgba(46,41,34,.7);
+  border-bottom: 1px solid rgba(226,218,204,.8);
   transition: background .3s;
 }
-header.scrolled { background: rgba(20,18,16,.92); }
+header.scrolled { background: rgba(250,247,241,.94); box-shadow: 0 2px 30px rgba(42,36,29,.06); }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
 .brand {
   font-family: var(--serif);
@@ -309,7 +309,7 @@ header.scrolled { background: rgba(20,18,16,.92); }
   font-family: var(--serif);
   transition: background .25s, color .25s, transform .35s cubic-bezier(.34,1.56,.64,1);
 }
-.brand:hover .mark { background: var(--cobre); color: var(--bg); transform: rotate(8deg); }
+.brand:hover .mark { background: var(--cobre); color: #fff; transform: rotate(8deg); }
 .nav-links { display: flex; gap: 34px; font-size: 14px; color: var(--crema-dim); }
 .nav-links a { position: relative; transition: color .2s; padding: 4px 0; }
 .nav-links a::after {
@@ -379,7 +379,7 @@ header.scrolled { background: rgba(20,18,16,.92); }
   align-items: center;
   gap: 10px;
   border: 1px solid var(--linea);
-  background: rgba(33,29,25,.6);
+  background: rgba(255,255,255,.65);
   border-radius: 999px;
   padding: 8px 18px 8px 10px;
   font-size: 12.5px;
@@ -430,14 +430,14 @@ header.scrolled { background: rgba(20,18,16,.92); }
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--linea);
-  box-shadow: 0 40px 100px rgba(0,0,0,.5);
+  box-shadow: 0 30px 70px rgba(42,36,29,.16);
   transform-style: preserve-3d;
 }
 .hero-visual .frame-tag {
   position: absolute;
   bottom: 18px; left: 18px;
   z-index: 3;
-  background: rgba(20,18,16,.75);
+  background: rgba(255,255,255,.85);
   backdrop-filter: blur(10px);
   border: 1px solid var(--linea);
   border-radius: 12px;
@@ -457,7 +457,7 @@ header.scrolled { background: rgba(20,18,16,.92); }
 .photo-slot {
   width: 100%; height: 100%;
   background:
-    linear-gradient(145deg, #2A251F 0%, #1E1A16 60%, #181512 100%);
+    linear-gradient(145deg, #EDE6D9 0%, #E2D9C8 60%, #D9CFBC 100%);
   display: grid;
   place-items: center;
   color: var(--crema-mute);
@@ -467,7 +467,7 @@ header.scrolled { background: rgba(20,18,16,.92); }
   content: '';
   position: absolute;
   inset: 14px;
-  border: 1px dashed rgba(132,124,112,.3);
+  border: 1px dashed rgba(150,140,125,.4);
   border-radius: 10px;
 }
 .photo-slot .inner { text-align: center; padding: 20px; position: relative; }
@@ -561,8 +561,8 @@ section { padding: 110px 0; position: relative; }
 }
 .craft-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(201,142,90,.45);
-  box-shadow: 0 30px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(201,142,90,.15);
+  border-color: rgba(176,120,74,.5);
+  box-shadow: 0 24px 50px rgba(42,36,29,.14), 0 0 0 1px rgba(176,120,74,.15);
 }
 .craft-card .ph { aspect-ratio: 16/11; overflow: hidden; }
 .craft-card .num-bg {
@@ -671,7 +671,7 @@ section { padding: 110px 0; position: relative; }
   overflow: hidden;
   border: 1px solid var(--linea);
   position: relative;
-  box-shadow: 0 30px 80px rgba(0,0,0,.4);
+  box-shadow: 0 24px 60px rgba(42,36,29,.14);
 }
 .about-visual .corner {
   position: absolute;
