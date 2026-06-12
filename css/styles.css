@@ -148,7 +148,7 @@ header { position: sticky; }
   left: 0;
   width: 100%;
   height: 0;
-  z-index: 89;
+  z-index: 96; /* sobre el header, para que el serrucho no quede tapado */
   pointer-events: none;
 }
 .saw-progress .cut-line {
@@ -171,11 +171,11 @@ header { position: sticky; }
 }
 .saw-progress .saw {
   position: absolute;
-  top: -13px;
+  top: -17px;
   left: 0;
-  width: 30px;
-  height: 30px;
-  color: var(--cobre-light);
+  width: 38px;
+  height: 38px;
+  color: var(--cobre);
   will-change: transform;
 }
 .saw-progress .saw svg {
