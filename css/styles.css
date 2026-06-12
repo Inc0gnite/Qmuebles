@@ -137,38 +137,67 @@ header { position: sticky; }
   to   { top: -20%; }
 }
 
-/* Iconos del oficio flotando */
-.bg-icons {
+/* ===== Serrucho cortando (barra de progreso de scroll) ===== */
+.saw-progress {
   position: fixed;
-  inset: 0;
+  top: 76px; /* justo bajo el header */
+  left: 0;
+  width: 100%;
+  height: 0;
+  z-index: 89;
+  pointer-events: none;
+}
+.saw-progress .cut-line {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  border-top: 1.5px dashed rgba(201,142,90,.25);
+}
+.saw-progress .cut-done {
+  position: absolute;
+  top: -1px; left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cobre-deep), var(--cobre-light));
+  box-shadow: 0 0 12px rgba(201,142,90,.5);
+  transition: width .1s linear;
+}
+.saw-progress .saw {
+  position: absolute;
+  top: -13px;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  color: var(--cobre-light);
+  filter: drop-shadow(0 0 6px rgba(201,142,90,.5));
+  transform: translateX(-50%) scaleX(-1);
+  animation: saw-wiggle .35s ease-in-out infinite alternate;
+}
+@keyframes saw-wiggle {
+  from { margin-top: 0; }
+  to   { margin-top: 3px; }
+}
+
+/* ===== Silla que se dibuja con el scroll ===== */
+.build-chair {
+  position: fixed;
+  right: 3vw;
+  bottom: 4vh;
+  width: clamp(140px, 16vw, 240px);
   z-index: 0;
   pointer-events: none;
-  overflow: hidden;
-}
-.bg-icon {
-  position: absolute;
   color: var(--cobre);
-  opacity: .07;
-  animation: icon-float 16s ease-in-out infinite alternate;
+  opacity: .16;
 }
-@keyframes icon-float {
-  0%   { transform: translate(0, 0) rotate(var(--rot, 0deg)); }
-  50%  { transform: translate(14px, -22px) rotate(calc(var(--rot, 0deg) + 6deg)); }
-  100% { transform: translate(-10px, 16px) rotate(calc(var(--rot, 0deg) - 5deg)); }
+.build-chair .draw {
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* dash gestionado por JS según el scroll */
 }
-.bg-icon.i1  { width: 90px;  top: 12%; left: 5%;   --rot: -12deg; animation-duration: 18s; }
-.bg-icon.i2  { width: 70px;  top: 28%; right: 7%;  --rot: 18deg;  animation-duration: 21s; animation-delay: -4s; }
-.bg-icon.i3  { width: 110px; top: 45%; left: 9%;   --rot: 8deg;   animation-duration: 16s; animation-delay: -8s; }
-.bg-icon.i4  { width: 95px;  top: 62%; right: 5%;  --rot: -8deg;  animation-duration: 23s; animation-delay: -2s; }
-.bg-icon.i5  { width: 65px;  top: 78%; left: 14%;  --rot: 15deg;  animation-duration: 19s; animation-delay: -11s; }
-.bg-icon.i6  { width: 80px;  top: 8%;  right: 28%; --rot: -20deg; animation-duration: 24s; animation-delay: -6s; }
-.bg-icon.i7  { width: 75px;  top: 88%; right: 20%; --rot: 5deg;   animation-duration: 17s; animation-delay: -9s; }
-.bg-icon.i8  { width: 60px;  top: 55%; left: 45%;  --rot: 25deg;  animation-duration: 26s; animation-delay: -13s; }
-.bg-icon.i9  { width: 50px;  top: 20%; left: 32%;  --rot: -30deg; animation-duration: 20s; animation-delay: -5s; }
-.bg-icon.i10 { width: 85px;  top: 70%; right: 38%; --rot: 0deg;   animation-duration: 30s; animation-delay: -15s; }
 @media (max-width: 760px) {
-  .bg-icon.i8, .bg-icon.i9, .bg-icon.i10 { display: none; }
-  .bg-icon { opacity: .05; }
+  .build-chair { width: 110px; right: 2vw; bottom: 90px; opacity: .1; }
 }
 
 /* Grain sutil de fondo */

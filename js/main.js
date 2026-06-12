@@ -3,9 +3,56 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 // Header scroll state
 const header = document.querySelector('header');
-window.addEventListener('scroll', () => {
+
+// ===== Animaciones ligadas al scroll =====
+const cutDone = document.getElementById('cutDone');
+const sawIcon = document.getElementById('sawIcon');
+const buildChair = document.getElementById('buildChair');
+const chairPaths = buildChair ? Array.from(buildChair.querySelectorAll('.draw')) : [];
+const blobs = document.querySelectorAll('.bg-blob');
+
+// preparar trazos de la silla: cada path conoce su largo
+let chairTotal = 0;
+const chairLens = chairPaths.map(p => {
+  const len = p.getTotalLength();
+  p.style.strokeDasharray = len;
+  p.style.strokeDashoffset = len;
+  chairTotal += len;
+  return len;
+});
+
+function onScroll() {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+
   header.classList.toggle('scrolled', window.scrollY > 40);
-}, { passive: true });
+
+  // serrucho avanza cortando
+  if (cutDone && sawIcon) {
+    const pct = progress * 100;
+    cutDone.style.width = pct + '%';
+    sawIcon.style.left = pct + '%';
+  }
+
+  // la silla se dibuja trazo a trazo, en orden (respaldo → asiento → patas)
+  if (chairPaths.length) {
+    let budget = progress * chairTotal;
+    for (let i = 0; i < chairPaths.length; i++) {
+      const len = chairLens[i];
+      const drawn = Math.max(0, Math.min(len, budget));
+      chairPaths[i].style.strokeDashoffset = len - drawn;
+      budget -= len;
+    }
+  }
+
+  // parallax suave en los blobs de luz
+  blobs.forEach((b, i) => {
+    const speed = (i + 1) * 40;
+    b.style.translate = `0 ${progress * speed}px`;
+  });
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
 
 // Scroll reveal
 const revealObserver = new IntersectionObserver((entries) => {
