@@ -16,7 +16,7 @@
   --cobre-deep: #9A5520;
   --wa: #25D366;
   --wa-dark: #1EBE5A;
-  --serif: 'Playfair Display', Georgia, serif;
+  --serif: 'Bricolage Grotesque', system-ui, sans-serif;
   --sans: 'Plus Jakarta Sans', system-ui, sans-serif;
   --maxw: 1160px;
   --radius: 18px;
@@ -33,7 +33,9 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
+/* Bricolage no trae cursiva: el énfasis lo da solo el color cobre */
+h1 em, h2 em, h3 em, .stat .big em { font-style: normal; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
